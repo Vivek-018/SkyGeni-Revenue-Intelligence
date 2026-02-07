@@ -1,0 +1,65 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+data/revenue.db*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Testing
+coverage/
+.nyc_output
+
+# Production
+/build
+/dist
+
+# Misc
+.cache/
+.temp/
+
+# Root level markdown files (ignore all .md files in root)
+/*.md
+
+# Root level JSON files (ignore all .json files in root)
+/*.json
+
+# Root level YAML files (ignore all .yaml/.yml files in root)
+/*.yaml
+/*.yml
+
+# Root level specific files
+/Procfile
+/railway.json
+/render.yaml
