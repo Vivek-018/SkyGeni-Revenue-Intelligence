@@ -49,8 +49,9 @@ coverage/
 .cache/
 .temp/
 
-# Root level markdown files (ignore all .md files in root)
+# Root level markdown files (ignore all .md files except README.md)
 /*.md
+!README.md
 
 # Root level JSON files (ignore all .json files in root)
 /*.json
