@@ -71,11 +71,21 @@ REACT_APP_API_URL=http://localhost:3001
 
 ### Backend (Render)
 1. Deploy to [Render](https://render.com)
-2. Set environment variables: `NODE_ENV=production`, `DB_PATH=./data/revenue.db`, `FRONTEND_URL=<your-vercel-url>`
+2. **Important Settings:**
+   - **Root Directory**: `backend`
+   - **Build Command**: `npm install && npm run build`
+   - **Start Command**: `npm start`
+3. Set environment variables:
+   - `NODE_ENV=production`
+   - `DB_PATH=./data/revenue.db`
+   - `FRONTEND_URL=<your-vercel-url>`
 
 ### Frontend (Vercel)
 1. Deploy to [Vercel](https://vercel.com)
-2. Set environment variable: `REACT_APP_API_URL=<your-render-backend-url>`
+2. **Important Settings:**
+   - **Root Directory**: `frontend`
+   - **Build Command**: `npm run build` (auto-detected)
+3. Set environment variable: `REACT_APP_API_URL=<your-render-backend-url>`
 
 ## 📝 License
 

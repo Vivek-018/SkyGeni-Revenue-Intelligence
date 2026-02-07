@@ -63,4 +63,4 @@ coverage/
 # Root level specific files
 /Procfile
 /railway.json
-/render.yaml
+# render.yaml is needed for Render deployment
