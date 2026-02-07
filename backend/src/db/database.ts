@@ -5,12 +5,13 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-// Default to root data directory (works for both local and production)
-// In production, use ./data/revenue.db relative to backend directory
+// Default to data directory
+// In production: data folder is copied to backend/data/ during build
+// In local dev: data folder is at repo root
 const DB_PATH = process.env.DB_PATH || (
   process.env.NODE_ENV === 'production' 
-    ? path.join(__dirname, '../../data/revenue.db')
-    : path.join(__dirname, '../../../data/revenue.db')
+    ? path.join(process.cwd(), 'data/revenue.db')  // backend/data/revenue.db
+    : path.join(__dirname, '../../../data/revenue.db')  // Local: repo root/data/revenue.db
 );
 
 // Ensure data directory exists

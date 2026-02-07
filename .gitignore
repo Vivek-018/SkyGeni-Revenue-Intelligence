@@ -19,6 +19,8 @@ build/
 *.db-shm
 *.db-wal
 data/revenue.db*
+backend/data/*.db
+backend/data/*.db-*
 
 # IDE
 .vscode/
@@ -56,9 +58,10 @@ coverage/
 # Root level JSON files (ignore all .json files in root)
 /*.json
 
-# Root level YAML files (ignore all .yaml/.yml files in root)
+# Root level YAML files (ignore all .yaml/.yml files except render.yaml)
 /*.yaml
 /*.yml
+!render.yaml
 
 # Root level specific files
 /Procfile

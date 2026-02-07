@@ -49,10 +49,35 @@ function seedDatabase() {
     DELETE FROM reps;
   `);
 
-  // Read JSON files - handle both local and production paths
-  const dataDir = process.env.NODE_ENV === 'production'
-    ? path.join(__dirname, '../../data')
-    : path.join(__dirname, '../../../data');
+  // Read JSON files
+  // In production (Render with rootDir=backend): data folder is copied to backend/data/ during build
+  // In local dev: data folder is at repo root
+  const possiblePaths = [
+    path.join(process.cwd(), 'data'),         // backend/data/ (production - after copy)
+    path.join(__dirname, '../../data'),       // backend/dist/data/ (fallback)
+    path.join(process.cwd(), '../data'),      // ../data/ (local dev - repo root)
+    path.join(__dirname, '../../../data'),    // From dist/scripts, up to root (local dev)
+  ];
+  
+  let dataDir = possiblePaths[0];
+  let found = false;
+  for (const testPath of possiblePaths) {
+    const testFile = path.join(testPath, 'accounts.json');
+    if (fs.existsSync(testFile)) {
+      dataDir = testPath;
+      found = true;
+      console.log(`Found data directory at: ${dataDir}`);
+      break;
+    }
+  }
+  
+  // Verify data directory exists
+  if (!found) {
+    console.error('Data directory not found. Tried paths:', possiblePaths);
+    console.error('Current working directory:', process.cwd());
+    console.error('__dirname:', __dirname);
+    throw new Error(`Cannot find data files. Tried: ${possiblePaths.join(', ')}`);
+  }
   
   const accounts: Account[] = JSON.parse(
     fs.readFileSync(path.join(dataDir, 'accounts.json'), 'utf-8')
